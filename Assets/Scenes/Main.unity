@@ -129,8 +129,10 @@ GameObject:
   m_Component:
   - component: {fileID: 104725449}
   - component: {fileID: 104725452}
-  - component: {fileID: 104725451}
   - component: {fileID: 104725450}
+  - component: {fileID: 104725454}
+  - component: {fileID: 104725451}
+  - component: {fileID: 104725453}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -197,8 +199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58795f8f4fcf4034a87a0316252cd61c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement_WASD
-  movementData: {fileID: 11400000, guid: 8f46d67ffbe157444abc86479ff852b5, type: 2}
-  movementAction: {fileID: 1733305322}
 --- !u!143 &104725452
 CharacterController:
   m_ObjectHideFlags: 0
@@ -224,6 +224,33 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &104725453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104725447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b97c70a8132b540876200c49d551c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Movement_Jump
+--- !u!114 &104725454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104725447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b52e718582f3be4287319982eac7f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Movement_Core
+  movementData: {fileID: 11400000, guid: 8f46d67ffbe157444abc86479ff852b5, type: 2}
+  moveAction: {fileID: 1569490242}
+  jumpAction: {fileID: 1254880785}
 --- !u!1 &213414367
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +331,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: add4176be4a982145919e30baffc5b85, type: 2}
+  - {fileID: 2100000, guid: 59dc38f9e80a24f4287a6be845f8aef9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -593,6 +620,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCamera
   lookAction: {fileID: 503046157}
   cameraData: {fileID: 11400000, guid: e67b6da57957a824e9686dd29dd960bd, type: 2}
+--- !u!114 &1254880785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Widow/Jump
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_ActionId: 1116ce87-58ae-42d9-b452-e76445b01c77
 --- !u!1 &1519671522
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,6 +858,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -25.796, z: 0}
+--- !u!114 &1569490242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Widow/Move
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_ActionId: 69a865a3-b66c-414f-81e7-b205c25910f8
 --- !u!1 &1664080338
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,20 +984,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1733305322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
-  m_Name: Widow/Move
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
-  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  m_ActionId: 69a865a3-b66c-414f-81e7-b205c25910f8
 --- !u!1 &1855281554
 GameObject:
   m_ObjectHideFlags: 0
