@@ -12,4 +12,10 @@ public class MovementData : ScriptableObject
     [Header("Gravity")]
     public float gravity = -20f;
     public float groundedForce = -2f;
+
+    [Header("Crouch")]
+    public float crouchHeight = 1f;
+    public float crouchCameraOffset = -0.5f;
+    public LayerMask crouchCollisionMask;
+
 }

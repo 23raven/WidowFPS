@@ -9,13 +9,15 @@ public class Movement_Core : MonoBehaviour
 
     [Header("Input")]
     [SerializeField] private InputActionReference moveAction;
-    [SerializeField] private InputActionReference jumpAction;
+    [SerializeField] private InputActionReference jumpAction; 
+    [SerializeField] private InputActionReference crouchAction;
 
     public MovementData Data => movementData;
     public CharacterController Controller => characterController;
 
     public InputAction MoveAction => moveAction.action;
     public InputAction JumpAction => jumpAction.action;
+    public InputAction CrouchAction => crouchAction.action;
 
     private CharacterController characterController;
 
