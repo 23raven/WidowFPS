@@ -153,7 +153,6 @@ Transform:
   m_Children:
   - {fileID: 979352613}
   - {fileID: 656496657}
-  - {fileID: 213414368}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &104725450
@@ -198,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58795f8f4fcf4034a87a0316252cd61c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement_WASD
-  moveSpeed: 5
+  movementData: {fileID: 11400000, guid: 8f46d67ffbe157444abc86479ff852b5, type: 2}
   movementAction: {fileID: 1733305322}
 --- !u!143 &104725452
 CharacterController:
@@ -252,12 +251,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213414367}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: 0.8, z: 0.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.3, y: -0.20000005, z: 0.5}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 104725449}
+  m_Father: {fileID: 979352613}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &213414369
 BoxCollider:
@@ -532,7 +531,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 213414368}
   m_Father: {fileID: 104725449}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &979352614
@@ -592,8 +592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCamera
   lookAction: {fileID: 503046157}
-  sensitivity: 0.1
-  verticalLimit: 90
+  cameraData: {fileID: 11400000, guid: e67b6da57957a824e9686dd29dd960bd, type: 2}
 --- !u!1 &1519671522
 GameObject:
   m_ObjectHideFlags: 0

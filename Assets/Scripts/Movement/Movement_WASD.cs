@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class Movement_WASD : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private MovementData movementData;
 
     [Header("Input")]
     [SerializeField] private InputActionReference movementAction;
@@ -36,7 +36,7 @@ public class Movement_WASD : MonoBehaviour
             transform.forward * input.y;
 
         characterController.Move(
-            moveDirection * moveSpeed * Time.deltaTime
+            moveDirection * movementData.moveSpeed * Time.deltaTime
         );
     }
 }

@@ -7,8 +7,7 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] private InputActionReference lookAction;
 
     [Header("Settings")]
-    [SerializeField] private float sensitivity = 0.1f;
-    [SerializeField] private float verticalLimit = 89f;
+    [SerializeField] private CameraData cameraData;
 
     private float verticalRotation;
 
@@ -37,11 +36,22 @@ public class PlayerCamera : MonoBehaviour
     {
         Vector2 input = lookAction.action.ReadValue<Vector2>();
 
-        transform.parent.Rotate(Vector3.up * input.x * sensitivity);
+        float mouseX = input.x * (cameraData.sensitivity / 50f);
+        float mouseY = input.y * (cameraData.sensitivity / 50f);
 
-        verticalRotation -= input.y * sensitivity;
-        verticalRotation = Mathf.Clamp(verticalRotation, -verticalLimit, verticalLimit);
+        transform.parent.Rotate(Vector3.up * mouseX);
 
-        transform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+        verticalRotation -= mouseY;
+        verticalRotation = Mathf.Clamp(
+            verticalRotation,
+            -cameraData.verticalLimit,
+            cameraData.verticalLimit
+        );
+
+        transform.localRotation = Quaternion.Euler(
+            verticalRotation,
+            0f,
+            0f
+        );
     }
 }
