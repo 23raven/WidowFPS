@@ -8,8 +8,10 @@ public class Weapon_Aim : MonoBehaviour
 
     private float defaultFOV;
 
-    public bool IsAiming =>
-        weapon.AimAction.IsPressed();
+    private bool isAiming;
+    private bool aimLocked;
+
+    public bool IsAiming => isAiming;
 
     private void Awake()
     {
@@ -21,12 +23,22 @@ public class Weapon_Aim : MonoBehaviour
 
     private void Update()
     {
+        if (!weapon.AimAction.IsPressed())
+        {
+            isAiming = false;
+            aimLocked = false;
+        }
+        else if (!aimLocked)
+        {
+            isAiming = true;
+        }
+
         UpdateFOV();
     }
 
     private void UpdateFOV()
     {
-        float targetFOV = IsAiming
+        float targetFOV = isAiming
             ? weapon.Data.aimFOV
             : defaultFOV;
 
@@ -35,5 +47,11 @@ public class Weapon_Aim : MonoBehaviour
             targetFOV,
             weapon.Data.aimTransitionSpeed * Time.deltaTime
         );
+    }
+
+    public void Deactivate()
+    {
+        isAiming = false;
+        aimLocked = true;
     }
 }

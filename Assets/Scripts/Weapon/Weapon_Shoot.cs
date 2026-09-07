@@ -8,6 +8,7 @@ public class Weapon_Shoot : MonoBehaviour
     private Weapon_Charge charge;
     private Weapon_Targeting targeting;
     private Weapon_Damage damage;
+    private Weapon_Aim aim;
 
     private float nextFireTime;
 
@@ -17,6 +18,7 @@ public class Weapon_Shoot : MonoBehaviour
         charge = GetComponent<Weapon_Charge>();
         targeting = GetComponent<Weapon_Targeting>();
         damage = GetComponent<Weapon_Damage>();
+        aim = GetComponent<Weapon_Aim>();
     }
 
     private void Update()
@@ -49,6 +51,7 @@ public class Weapon_Shoot : MonoBehaviour
         }
 
         // После выстрела заряд сбрасывается.
+        aim.Deactivate();
         charge.ResetCharge();
     }
 }
