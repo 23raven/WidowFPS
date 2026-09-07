@@ -6,7 +6,10 @@ public class WeaponData : ScriptableObject
     [Header("Damage")]
     public float minDamage = 12f;
     public float maxDamage = 125f;
+
     public float headMultiplier = 2.5f;
+    public float bodyMultiplier = 1f;
+    public float limbMultiplier = 0.8f;
 
     [Header("Shooting")]
     public float fireRate = 1f;

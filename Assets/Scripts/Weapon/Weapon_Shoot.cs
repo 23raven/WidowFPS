@@ -7,6 +7,7 @@ public class Weapon_Shoot : MonoBehaviour
     private Weapon_Core weapon;
     private Weapon_Charge charge;
     private Weapon_Targeting targeting;
+    private Weapon_Damage damage;
 
     private float nextFireTime;
 
@@ -15,6 +16,7 @@ public class Weapon_Shoot : MonoBehaviour
         weapon = GetComponent<Weapon_Core>();
         charge = GetComponent<Weapon_Charge>();
         targeting = GetComponent<Weapon_Targeting>();
+        damage = GetComponent<Weapon_Damage>();
     }
 
     private void Update()
@@ -38,13 +40,11 @@ public class Weapon_Shoot : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, weapon.Data.range))
         {
-            HitZone zone = targeting.GetHitZone(hit);
+            float finalDamage = damage.CalculateDamage(hit);
 
             Debug.Log(
                 $"Hit: {hit.collider.name} | " +
-                $"Zone: {zone} | " +
-                $"Charge: {charge.ChargePercent:P0} | " +
-                $"Damage: {charge.CurrentDamage:F1}"
+                $"Damage: {finalDamage:F1}"
             );
         }
 
