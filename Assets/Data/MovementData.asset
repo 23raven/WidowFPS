@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6117e56201292624fa50ba06602df4da, type: 3}
   m_Name: MovementData
   m_EditorClassIdentifier: Assembly-CSharp::MovementData
-  moveSpeed: 5
+  moveSpeed: 7
   jumpForce: 7
   gravity: -20
   groundedForce: -2
+  crouchHeight: 1
+  crouchCameraOffset: -0.5
+  crouchCollisionMask:
+    serializedVersion: 2
+    m_Bits: 55
