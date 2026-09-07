@@ -18,4 +18,7 @@ public class MovementData : ScriptableObject
     public float crouchCameraOffset = -0.5f;
     public LayerMask crouchCollisionMask;
 
+    [Header("Aim")]
+    public float aimMoveSpeedMultiplier = 0.5f;
+
 }

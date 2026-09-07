@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Movement_WASD : MonoBehaviour
 {
+    [SerializeField] private PlayerState playerState;
+
     private Movement_Core movement;
 
     private void Awake()
@@ -27,8 +29,15 @@ public class Movement_WASD : MonoBehaviour
             moveDirection.Normalize();
         }
 
+        float moveSpeed = movement.Data.moveSpeed;
+
+        if (playerState.IsAiming)
+        {
+            moveSpeed *= movement.Data.aimMoveSpeedMultiplier;
+        }
+
         movement.Controller.Move(
-            moveDirection * movement.Data.moveSpeed * Time.deltaTime
+            moveDirection * moveSpeed * Time.deltaTime
         );
     }
 }
