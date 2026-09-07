@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3f89e3125318246a1131912b3cc2e9, type: 3}
   m_Name: WeaponData
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  damage: 120
+  minDamage: 50
+  maxDamage: 120
+  headMultiplier: 2.5
   fireRate: 1
   range: 1000
-  spread: 0
+  chargeTime: 0.9
+  magazineSize: 35
+  ammoPerShot: 5
+  aimFOV: 30
+  aimTransitionSpeed: 10
