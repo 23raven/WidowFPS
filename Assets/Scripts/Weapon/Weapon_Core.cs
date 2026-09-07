@@ -8,7 +8,7 @@ public class Weapon_Core : MonoBehaviour
 
     [Header("Input")]
     [SerializeField] private InputActionReference fireAction;
-    [SerializeField] private InputActionReference aimAction;
+    [SerializeField] private InputActionReference aimAction; 
 
     [Header("References")]
     [SerializeField] private Camera playerCamera;

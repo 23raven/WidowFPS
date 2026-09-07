@@ -19,8 +19,7 @@ public class WeaponData : ScriptableObject
     public int magazineSize = 35;
     public int ammoPerShot = 5;
 
-    [Header("Falloff")]
-    public float falloffStart = 60f;
-    public float falloffEnd = 85f;
-    public float minimumFalloff = 0.5f;
+    [Header("Aim")]
+    public float aimFOV = 30f;
+    public float aimTransitionSpeed = 10f;
 }
