@@ -16,11 +16,13 @@ public class Weapon_Damage : MonoBehaviour
         charge = GetComponent<Weapon_Charge>();
     }
 
-    public float CalculateDamage(RaycastHit hit)
+    public float CalculateDamage(RaycastHit hit, bool isScoped)
     {
         HitZone zone = targeting.GetHitZone(hit);
 
-        float damage = charge.CurrentDamage;
+        float damage = isScoped
+            ? charge.CurrentDamage
+            : weapon.Data.hipFireDamage;
 
         switch (zone)
         {

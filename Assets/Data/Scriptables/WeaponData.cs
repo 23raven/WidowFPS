@@ -3,10 +3,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "WeaponData", menuName = "WidowFPS/Weapon Data")]
 public class WeaponData : ScriptableObject
 {
-    [Header("Damage")]
+    [Header("Hip Fire Damage")]
+    public float hipFireDamage = 14f;
+
+    [Header("Scoped Damage")]
     public float minDamage = 12f;
     public float maxDamage = 125f;
 
+    [Header("Damage Multipliers")]
     public float headMultiplier = 2.5f;
     public float bodyMultiplier = 1f;
     public float limbMultiplier = 0.8f;
