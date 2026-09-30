@@ -6,7 +6,7 @@ public class PlayerCamera : MonoBehaviour
     [Header("Input")]
     [SerializeField] private InputActionReference lookAction;
 
-    [Header("Settings")]
+    [Header("Data")]
     [SerializeField] private CameraData cameraData;
 
     private float verticalRotation;
@@ -42,6 +42,24 @@ public class PlayerCamera : MonoBehaviour
         transform.parent.Rotate(Vector3.up * mouseX);
 
         verticalRotation -= mouseY;
+
+        verticalRotation = Mathf.Clamp(
+            verticalRotation,
+            -cameraData.verticalLimit,
+            cameraData.verticalLimit
+        );
+
+        transform.localRotation = Quaternion.Euler(
+            verticalRotation,
+            0f,
+            0f
+        );
+    }
+
+    public void AddRecoil(float amount)
+    {
+        verticalRotation -= amount;
+
         verticalRotation = Mathf.Clamp(
             verticalRotation,
             -cameraData.verticalLimit,

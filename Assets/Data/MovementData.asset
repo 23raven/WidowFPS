@@ -21,3 +21,4 @@ MonoBehaviour:
   crouchCollisionMask:
     serializedVersion: 2
     m_Bits: 55
+  aimMoveSpeedMultiplier: 0.2

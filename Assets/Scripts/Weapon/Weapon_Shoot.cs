@@ -4,12 +4,15 @@ using UnityEngine;
 [RequireComponent(typeof(Weapon_Charge))]
 [RequireComponent(typeof(Weapon_Aim))]
 [RequireComponent(typeof(Weapon_Damage))]
+[RequireComponent(typeof(Weapon_Recoil))]
 public class Weapon_Shoot : MonoBehaviour
 {
     private Weapon_Core weapon;
     private Weapon_Charge charge;
     private Weapon_Aim aim;
     private Weapon_Damage damage;
+    private Weapon_Debug debug;
+    private Weapon_Impact impact;
 
     private float nextFireTime;
     private bool scopedShotLock;
@@ -20,6 +23,9 @@ public class Weapon_Shoot : MonoBehaviour
         charge = GetComponent<Weapon_Charge>();
         aim = GetComponent<Weapon_Aim>();
         damage = GetComponent<Weapon_Damage>();
+        debug = GetComponent<Weapon_Debug>();
+        impact = GetComponent<Weapon_Impact>();
+
     }
 
     private void Update()
@@ -47,7 +53,7 @@ public class Weapon_Shoot : MonoBehaviour
         if (Time.time < nextFireTime)
             return;
 
-        Shoot();
+        Shoot(false);
 
         nextFireTime = Time.time + 1f / weapon.Data.fireRate;
     }
@@ -63,7 +69,9 @@ public class Weapon_Shoot : MonoBehaviour
         if (Time.time < nextFireTime)
             return;
 
-        Shoot();
+        bool wasAiming = aim.IsAiming;
+
+        Shoot(wasAiming);
 
         nextFireTime = Time.time + 1f / weapon.Data.fireRate;
 
@@ -73,7 +81,7 @@ public class Weapon_Shoot : MonoBehaviour
         charge.ResetCharge();
     }
 
-    private void Shoot()
+    private void Shoot(bool isScoped)
     {
         Ray ray = weapon.PlayerCamera.ViewportPointToRay(
             new Vector3(0.5f, 0.5f, 0f)
@@ -81,12 +89,14 @@ public class Weapon_Shoot : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, weapon.Data.range))
         {
-            float finalDamage = damage.CalculateDamage(hit, aim.IsAiming);
+            float finalDamage = damage.CalculateDamage(hit, isScoped);
 
             Debug.Log(
                 $"Hit: {hit.collider.name} | " +
                 $"Damage: {finalDamage:F1}"
             );
+
+            impact.Spawn(hit.point, hit.normal);
         }
     }
 }

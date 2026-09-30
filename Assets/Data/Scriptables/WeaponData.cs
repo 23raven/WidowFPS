@@ -29,4 +29,9 @@ public class WeaponData : ScriptableObject
     [Header("Aim")]
     public float aimFOV = 30f;
     public float aimTransitionSpeed = 10f;
+
+    [Header("Recoil")]
+    public float hipRecoil = 1f;
+    public float scopedRecoil = 0.5f;
+    public float recoilRecoverySpeed = 10f;
 }
